@@ -42,15 +42,15 @@ router.post('/login', authorizeLogin, (req, res, next) =>{
 function authorizeLogin(req, res, next){
   const body = req.body.user;
   const user = users.filter( x => x.email == req.body.user.email)[0];
-  currentUser = user;
 
-  if(!body.username || !body.password){
-    res.send({err: 'must provide stuff'})
-  } 
-  else if(body.username !== user.username || body.password !== user.password) {
-    res.send({err: 'wrong stuff'})
-  } 
+  if(!user || !body.email){
+    res.status(401).send({ error: 'Invalid Email' });
+  }
+  else if(body.password !== user.password) {
+    res.status(401).send({ error: 'Invalid Password' });
+  }
   else {
+    currentUser = user;
     next();
   }
 }

@@ -42,7 +42,7 @@ class UserService{
     if(this.current){
       deferred.resolve(true)
     } else {
-      this._$http({
+      return this._$http({
         url: this._API,
         method: 'GET',
         headers: {
