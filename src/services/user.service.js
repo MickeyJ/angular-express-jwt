@@ -43,7 +43,7 @@ class UserService{
       deferred.resolve(true)
     } else {
       return this._$http({
-        url: this._API,
+        url: this._API +'/me',
         method: 'GET',
         headers: {
           Authorization: `Bearer ${this._JWT.fetch()}`
