@@ -1,0 +1,54 @@
+
+<header id="header">
+
+  <nav id="nav" class="">
+
+    <ul show-authed="false">
+      <li>
+        <a ng-bind="header.pages.home"
+           class="page-link"
+           ui-sref-active="active-page"
+           ui-sref="app.home">
+        </a>
+      </li>
+      <li>
+        <a ng-bind="header.pages.login"
+           class="page-link"
+           ui-sref-active="active-page"
+           ui-sref="app.login">
+        </a>
+      </li>
+      <li>
+        <a ng-bind="header.pages.register"
+           class="page-link"
+           ui-sref-active="active-page"
+           ui-sref="app.register">
+        </a>
+      </li>
+    </ul>
+
+    <ul show-authed="true">
+      <li>
+        <a ng-bind="header.pages.home"
+           class="page-link"
+           ui-sref-active="active-page"
+           ui-sref="app.home">
+        </a>
+      </li>
+      <li>
+        <a ng-bind="'Log out'"
+           class="page-link"
+           ui-sref-active="active-page"
+           ng-click="header.logOut()">
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <div
+    ng-bind="header.appName"
+    id="banner-logo">
+  </div>
+
+</header>

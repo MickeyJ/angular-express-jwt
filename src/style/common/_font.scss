@@ -1,0 +1,33 @@
+
+@font-face {
+  font-family: sProLite;
+  src: url('../assets/fonts/SourceSansPro-Light.ttf');
+}
+
+@font-face {
+  font-family: JuliSans;
+  src: url('../assets/fonts/JuliusSansOne-Regular.ttf');
+}
+
+
+
+@font-face {
+  font-family: RoboMed;
+  src: url('../assets/fonts/RobotoMono-Medium.ttf');
+}
+
+$sProLite: sProLite, sans-serif;
+$JuliSans: JuliSans, sans-serif;
+$RoboMed: RoboMed, sans-serif;
+
+%anchor-style{
+  font-family: $JuliSans;
+  font-size: 1.6em;
+  color: $app-black;
+}
+
+%lite-font-style{
+  font-family: $sProLite;
+  font-size: 1.4em;
+  color: $app-black;
+}

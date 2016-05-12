@@ -1,0 +1,47 @@
+//noinspection SassScssResolvedByNameOnly
+
+#header{
+
+  #banner-logo{
+    font-size: 3em;
+    background: $app-blue;
+    color: white;
+    @include dead-center-text(150px);
+    @include transition( background 0.05s );
+    @include banner-shadow(12px, 11px, $app-shadow);
+
+    cursor: default;
+    user-select: none;
+    &::selection{
+      background-color: transparent;
+    }
+
+  }
+
+  #nav{
+    height: 60px;
+
+    ul{
+      li{
+        @extend %marg-sm-lat;
+        display: inline;
+      }
+    }
+
+    .page-link{
+      @extend %anchor-style;
+      @include transition(all 0.07s);
+
+      &:hover{
+        color: $app-lite-green;
+        text-decoration: none;
+      }
+    }
+
+    .active-page{
+      color: $app-lite-green;
+      text-decoration: underline;
+    }
+  }
+
+}

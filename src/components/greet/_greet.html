@@ -1,0 +1,32 @@
+<div id="greet-box" ng-if="greet.user">
+
+  <h2>Welcome {{greet.user.username}}!</h2>
+
+  <article class="col-md-6" >
+    <img
+      ng-src="{{greet.user.avatar}}"
+      class="img-responsive img-circle"
+      style="margin: auto"
+      alt="avatar"
+    />
+  </article>
+
+  <article class="col-md-6">
+
+    <div class="user-info-item">
+      <h4>Name</h4>
+      <span ng-bind="greet.user.username"></span>
+    </div>
+
+    <div class="user-info-item">
+      <h4>Email</h4>
+      <span ng-bind="greet.user.email"></span>
+    </div>
+
+    <div class="user-info-item">
+      <h4>Password</h4>
+      <span ng-bind="greet.user.password"></span>
+    </div>
+
+  </article>
+</div>

@@ -1,0 +1,48 @@
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center" ng-bind="auth.title"></h1>
+        <p class="text-xs-center">
+          <a href="">
+            Have an account?
+          </a>
+        </p>
+
+        <form ng-submit="auth.submitForm()">
+          <fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control form-control-lg"
+                     type="text"
+                     placeholder="Username"
+                     ng-model="auth.formData.username" />
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control form-control-lg"
+                     type="email"
+                     placeholder="Email"
+                     ng-model="auth.formData.email" />
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input class="form-control form-control-lg"
+                     type="password"
+                     placeholder="Password"
+                     ng-model="auth.formData.password" />
+            </fieldset>
+
+            <button class="btn btn-lg btn-primary pull-xs-right"
+                    ng-bind="auth.title"
+                    type="submit">
+            </button>
+
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
