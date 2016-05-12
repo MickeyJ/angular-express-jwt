@@ -7,8 +7,8 @@ const jwt = require('jsonwebtoken');
 const jwtSecret = 'iasdflikeasdfpizzasdf/p0o';
 
 const users = [
-  { id: 1, username: "Bob", email: "b@b.com", password: "asdf" },
-  { id: 2, username: "Suzy", email: 'suzy@mail.com', password: "zxcv" }
+  { id: 1, username: "Bob", email: "b@b.com", password: "asdf", avatar: 'images/aspen-forest.jpg' },
+  { id: 2, username: "Suzy", email: 'suzy@mail.com', password: "zxcv", avatar: 'images/aspen-forest.jpg' }
 ];
 
 let currentUser = {};
