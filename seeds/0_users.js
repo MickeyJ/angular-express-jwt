@@ -14,9 +14,6 @@ exports.seed = function(knex, Promise) {
         email: 'bob@mail.com',
         password: password
       })
-      .then(function(){
-        process.exit(0);
-      })
   )
 };
 

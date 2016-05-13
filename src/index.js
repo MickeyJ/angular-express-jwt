@@ -17,6 +17,7 @@ import './directives'
 import './layout'
 import './pages/auth';
 import './pages/home';
+import './pages/profile';
 
 const requires = [
   'ui.router',
@@ -26,12 +27,13 @@ const requires = [
   'app.components',
   'app.directives',
   'app.auth',
-  'app.home'
+  'app.home',
+  'app.profile'
 ];
 
 angular
   .module( 'app', requires )
-  .constant('AppConstants', AppConstants)
-  .controller('AppCtrl', AppCtrl )
+  .constant( 'AppConstants', AppConstants)
+  .controller( 'AppCtrl', AppCtrl )
   .config( AppConfig )
   .run( AppRun );

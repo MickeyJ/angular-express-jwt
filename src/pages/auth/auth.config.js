@@ -14,7 +14,7 @@ function AuthConfig($stateProvider){
         }
       }
     })
-
+    
     .state('app.register', {
       url: '/register',
       controllerAs: 'auth',
@@ -28,4 +28,5 @@ function AuthConfig($stateProvider){
       }
     })
 }
+
 export default ['$stateProvider', AuthConfig]

@@ -6,4 +6,5 @@ const AppFooter = {
     appName: '='
   }
 };
+
 export default AppFooter;

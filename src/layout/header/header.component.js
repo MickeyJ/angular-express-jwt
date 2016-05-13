@@ -9,7 +9,6 @@ const AppHeader= {
   controller: ['UserService', function(UserService){
     this.logOut = () =>{
       UserService.logout();
-
     }
   }]
 };

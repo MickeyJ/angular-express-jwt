@@ -10,7 +10,8 @@ const AppConstants = {
   pages: {
     home: 'Home',
     login: 'Log in',
-    register: 'Sign up'
-  },
+    register: 'Sign up',
+    profile: 'Profile'
+  }
 };
 export default AppConstants;
