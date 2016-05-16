@@ -1,5 +1,6 @@
-## Angular - Express - JWT
+## Reddit Clone: Angular - Express - JWT
 
+[Live Demo](https://mickey-reddit-clone.herokuapp.com/home)
 
 __Get all the stuff and things__
 
