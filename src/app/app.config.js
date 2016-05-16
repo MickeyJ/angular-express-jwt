@@ -9,11 +9,11 @@ function AppConfig($stateProvider, $urlRouterProvider, $locationProvider, $httpP
       abstract: true,
       controllerAs: '$app',
       controller: 'AppCtrl',
-      template: require('./../layout/_layout.html'),
+      template: require('../layout/_layout.html'),
       resolve: {
-        auth: function(UserService){
-          return UserService.verifyAuth()
-        }
+        auth: [ 'UserService', (UserService) =>{
+            return UserService.verifyAuth()
+        }]
       }
     });
 

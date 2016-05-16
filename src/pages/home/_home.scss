@@ -1,6 +1,53 @@
 //noinspection SassScssResolvedByNameOnly
 
 #home-page{
-  margin-top: 5%;
+  margin-bottom: 5%;
+
+  p{
+    @extend %lite-font-style
+  }
+
+  li{
+    font-size: 1.3em;
+    font-weight: 200;
+  }
+
+  .comment{
+    opacity: 1;
+
+
+
+    &.ng-hide-add,
+    &.ng-hide-remove{
+      transition: 0.5s linear all;
+    }
+    &.ng-hide {
+      opacity: 0;
+    }
+  }
 
 }
+
+.glyphicon-arrow-up,
+.glyphicon-arrow-down,
+.hoverable{
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.glyphicon-arrow-up:hover,
+.positive {
+  color: green;
+}
+
+.glyphicon-arrow-down:hover,
+.negative {
+  color: red;
+}
+
+.clear {
+  clear: both;
+}
+

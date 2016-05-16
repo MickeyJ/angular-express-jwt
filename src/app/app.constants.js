@@ -1,11 +1,11 @@
 
 const AppConstants = {
-  appName: 'Some App Name',
+  appName: 'Reddit Clone',
   jwtKey: 'jwtToken',
   API:(
     process.env.NODE_ENV !== 'production'
-      ? 'http://localhost:3000/users'
-      : '/users'
+      ? 'http://localhost:3000'
+      : ''
   ),
   pages: {
     home: 'Home',

@@ -10,9 +10,12 @@ function ProfileConfig($stateProvider) {
       template: require('./_profile.html'),
       title: 'Profile',
       resolve: {
-        auth(UserService){
+        auth: [ 'UserService', (UserService) =>{
           return UserService.ensureAuthIs(true)
-        }
+        }],
+        posts: [ 'UserService', 'PostService', (UserService, PostService) =>{
+          return PostService.fetchCurrentUserPosts(UserService.current.user_id)
+        }]
       }
     });
 }

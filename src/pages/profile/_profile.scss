@@ -1,0 +1,40 @@
+
+#profile-page{
+  margin-bottom: 5%;
+
+  p{
+    @extend %lite-font-style
+  }
+
+  li{
+    font-size: 1.3em;
+    font-weight: 200;
+  }
+
+  .newPostForm {
+
+    &.ng-hide-add,
+    &.ng-hide-remove{
+      transition: 0.2s linear all;
+      transform: translateY(-100%);
+    }
+    &.ng-hide {
+      transition: 0.2s linear all;
+      transform: translateY(0);
+    }
+  }
+
+  .user-posts{
+    &.ng-hide-add,
+    &.ng-hide-remove{
+      transition: 0.2s linear all;
+      transform: translateX(0);
+    }
+    &.ng-hide {
+      transition: 0.2s linear all;
+      transform: translateX(-100%);
+    }
+
+  }
+}
+

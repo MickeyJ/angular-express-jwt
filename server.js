@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 
 var users = require('./routes/users');
+var posts = require('./routes/posts');
 
 var app = express();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
+app.use('/posts', posts);
 
 app.use('*', (req, res, next) =>{
   res.sendFile('index.html', {

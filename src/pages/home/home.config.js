@@ -7,7 +7,12 @@ function HomeConfig($stateProvider) {
     controllerAs: 'home',
     controller: 'HomeCtrl',
     template: require('./_home.html'),
-    title: 'Home'
+    title: 'Home',
+    resolve: {
+      posts: [ 'PostService', (PostService) =>{
+        return PostService.fetchPosts()
+      }]
+    }
   });
 }
 export default ['$stateProvider', HomeConfig];

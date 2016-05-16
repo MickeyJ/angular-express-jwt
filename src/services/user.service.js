@@ -13,7 +13,7 @@ class UserService{
   attemptAuth(type, credentials){
     let route = (type === 'login') ? '/login' : '/register';
     return this._$http({
-      url: this._API + route,
+      url: this._API +'/users'+ route,
       method: 'POST',
       data: {
         user: credentials
@@ -33,16 +33,15 @@ class UserService{
   
   verifyAuth(){
     let deferred = this._$q.defer();
-    
     if(!this._JWT.fetch()){
       deferred.resolve(false);
       return deferred.promise;
     }
     if(this.current){
-      deferred.resolve(true)
+      deferred.resolve(true);
     } else {
       return this._$http({
-        url: this._API +'/me',
+        url: this._API +'/users/me',
         method: 'GET'
       }).then(res =>{
         this.current = res.data.user;
@@ -51,7 +50,7 @@ class UserService{
         console.error(err.data);
         this._JWT.destroy();
         deferred.resolve(false);
-      })
+      });
     }
     deferred.resolve(true);
     return deferred.promise;
@@ -59,16 +58,17 @@ class UserService{
 
   ensureAuthIs(bool){
     let deferred = this._$q.defer();
-    
-    this.verifyAuth().then(authType =>{
+    this.verifyAuth().then(authType => {
+      console.log('verify reload page', authType, bool);
       if(authType !== bool){
         this._$state.go('app.home');
         deferred.resolve(false);
       } else {
         deferred.resolve(true);
       }
+      return deferred.promise;
     });
-    return deferred.promise;
+
   }
 }
 export default ['JWT', 'AppConstants', '$q', '$http', '$state', UserService]

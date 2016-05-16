@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const AnnotatePlugin = require('ng-annotate-webpack-plugin');
-const strip = require('strip-loader');
 
 const DEV = process.env.NODE_ENV==='development';
 const PROD = process.env.NODE_ENV==='production';
@@ -20,21 +19,13 @@ const config = {
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.EnvironmentPlugin(["NODE_ENV"]),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
-    }),
-    new webpack.DefinePlugin({
-      'process.env':{
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      }
     })
   ],
-  resolve: {
-    extensions: ['', '.html', '.js', '.scss', '.css']
-  },
   module: {
     loaders: [
       {
@@ -52,12 +43,12 @@ const config = {
       },
       {
         test: /\.scss/,
-        loader: 'style-loader!css-loader!sass-loader!',
+        loader: 'style!css!sass!',
         exclude: /node_modules/
       },
       {
         test: /\.css?$/, 
-        loader: "style-loader!css-loader!"
+        loader: "style!css!"
       },
       {test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
@@ -68,18 +59,16 @@ const config = {
 };
 
 if(!DEV){
-  config.module.loaders.push({
-    test: /\.js/,
-    exclude: /node_modules/,
-    loader: strip.loader('console.log')
-  });
   config.plugins.push(
+    new webpack.optimize.DedupePlugin(),
     new AnnotatePlugin({
       add: true
     }),
     new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
       mangle: false,
       compressor: {
+        drop_console: true,
         warnings: true
       }
     })

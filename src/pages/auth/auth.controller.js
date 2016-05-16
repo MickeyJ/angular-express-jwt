@@ -15,7 +15,6 @@ class AuthCtrl{
       })
       .catch(err => {
         this.error = err.data.error;
-        console.log(err.data);
       })
   }
 }

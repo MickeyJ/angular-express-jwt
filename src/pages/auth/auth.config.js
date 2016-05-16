@@ -9,9 +9,10 @@ function AuthConfig($stateProvider){
       template: require('./_auth.html'),
       title: 'Log in',
       resolve: {
-        auth(UserService){
-          return UserService.ensureAuthIs(false)
-        }
+        auth: [ 'UserService', (UserService) =>{
+            return UserService.ensureAuthIs(false)
+          }
+        ]
       }
     })
     
@@ -22,9 +23,10 @@ function AuthConfig($stateProvider){
       template: require('./_auth.html'),
       title: 'Sign up',
       resolve: {
-        auth(UserService){
-          return UserService.ensureAuthIs(false)
-        }
+        auth: [ 'UserService', (UserService) =>{
+            return UserService.ensureAuthIs(false)
+          }
+        ]
       }
     })
 }

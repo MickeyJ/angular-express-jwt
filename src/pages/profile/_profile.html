@@ -1,2 +1,74 @@
 
-<h1>This is {{profile._User.username}}'s profile</h1>
+<div id="profile-page" class="container-fluid">
+  <button class="btn btn-success" ng-click="profile.showNewPostForm()">
+    Create New Post
+  </button>
+  <greet-user
+    ng-if="profile._User"
+    user="profile._User" >
+  </greet-user >
+
+  <div class="user-posts" ng-show="profile.userPostVisible">
+    <h4>You have {{profile._userPosts.length}} posts</h4>
+    <div ng-repeat="x in profile._userPosts" class="row post">
+      <div class="col-xs-2">
+        <img class="img-responsive"  ng-src="{{x.image}}" alt="post image " >
+      </div>
+      <button
+        ng-click="profile.removePost(x)"
+        class="col-xs-1 btn btn-danger glyphicon glyphicon-remove">
+      </button>
+      <article class="col-xs-9">
+        <h3>
+          <span>{{x.title}}</span>
+        </h3>
+        <h4>
+          Votes:
+          <span ng-class="profile.upvoteClass(x)">{{x.votes}}</span>
+        </h4>
+        <p class="clear">{{ x.description }}</p>
+        <p class="clear">{{ x.date | date }}</p>
+
+        <div class="comment">
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="comment in x.comments">
+              {{ comment.text }}
+            </li>
+          </ul>
+        </div>
+
+      </article>
+    </div>
+  </div>
+
+
+    <div class="container newPostForm" ng-show="profile.newPostVisible">
+      <form name="profile.postForm" ng-submit="profile.addPost(newPost)">
+
+        <div class="form-group" ng-class="{'has-error': profile.checkForError(profile.postForm.title), 'has-success': profile.postForm.title.$valid }">
+          <label ng-class="{'text-danger': profile.checkForError(profile.postForm.title), 'text-success': profile.postForm.title.$valid }">
+            Title
+          </label>
+          <input type="text" class="form-control" name="title" placeholder="Title" ng-model="newPost.title" required>
+          <p ng-show="profile.checkForError(profile.postForm.title)" class="help-block">Hey! Where's your title?</p>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': profile.checkForError(profile.postForm.image), 'has-success': profile.postForm.image.$valid }">
+          <label ng-class="{'text-danger': profile.checkForError(profile.postForm.image), 'text-success': profile.postForm.image.$valid }">Image URL</label>
+          <input type="text" class="form-control" name="image" placeholder="Image URL" ng-model="newPost.image" required>
+          <p ng-show="profile.checkForError(profile.postForm.image)" class="help-block">Hey! Where's your image?</p>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': profile.checkForError(profile.postForm.description), 'has-success': profile.postForm.description.$valid }">
+          <label ng-class="{'text-danger': profile.checkForError(profile.postForm.description), 'text-success': profile.postForm.description.$valid }">Description</label>
+          <input type="text" class="form-control" name="description" placeholder="Description" ng-model="newPost.description" required>
+          <p ng-show="profile.checkForError(profile.postForm.description)" class="help-block">Hey! What are your deepest thoughts?</p>
+        </div>
+
+        <input type="submit" class="btn btn-default" value="Add Post">
+      </form>
+  </div>
+
+
+
+</div>
